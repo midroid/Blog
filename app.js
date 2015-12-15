@@ -22,6 +22,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Setting up global variable to use for css and js purposes
+global.appRoot = path.resolve(__dirname);
+
 app.use('/', routes);
 app.use('/users', users);
 
