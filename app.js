@@ -4,9 +4,16 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var passport = require('passport');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+
+require('./models/Users');
+require('./config/passport');
+//Database
+mongoose.connect('mongodb://localhost/blog');
 
 var app = express();
 
@@ -21,9 +28,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
 
 // Setting up global variable to use for css and js purposes
 global.appRoot = path.resolve(__dirname);
+
+//
 
 app.use('/', routes);
 app.use('/users', users);
