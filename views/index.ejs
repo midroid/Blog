@@ -20,7 +20,7 @@
         <li><a href="#">About Us</a></li>
       </ul>
       <ul class="right">
-        <li><a href="">Sign In</a></li>
+        <li><a class="modal-trigger" href="#modal_signin">Sign In</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
@@ -28,7 +28,37 @@
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
-  </nav>
+  </nav
+  
+  <!-- Sign In Modal starts here -->
+      <!-- Modal Structure -->
+      <div id="modal_signin" class="modal">
+        <div class="modal-content">
+          <h4>Sign In</h4>
+          <div>
+            <form action="/login" method="post">
+              <div class="form-group">
+                <input type="text"
+                class="form-control"
+                placeholder="Username"
+                name="username"></input>
+              </div>
+              <div class="form-group">
+                <input type="password"
+                class="form-control"
+                placeholder="Password"
+                name="password"></input>
+              </div>
+              <button class="waves-effect waves-green btn-flat" type="submit">Sign In</button>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Forget Password</a>
+          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Register</a>
+        </div>
+      </div>
+  <!-- Sign In Modal ends here -->
 
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
