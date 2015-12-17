@@ -4,16 +4,18 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
+
 var mongoose = require('mongoose');
 var passport = require('passport');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
 
 require('./models/Users');
 require('./config/passport');
-//Database
-mongoose.connect('mongodb://localhost/blog');
+
+
+var routes = require('./routes/index');
+var users = require('./routes/users');
 
 var app = express();
 
@@ -33,10 +35,13 @@ app.use(passport.initialize());
 // Setting up global variable to use for css and js purposes
 global.appRoot = path.resolve(__dirname);
 
-//
+//Setting up the routes
 
 app.use('/', routes);
 app.use('/users', users);
+
+//Database
+mongoose.connect('mongodb://localhost/blog');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
